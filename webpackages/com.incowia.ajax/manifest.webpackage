@@ -1,0 +1,32 @@
+{
+  "name": "ajax",
+  "groupId": "com.incowia",
+  "version": "0.1.0-SNAPSHOT",
+  "modelVersion": "8.3.1",
+  "docType": "webpackage",
+  "author": {
+    "name": "Philipp Wagner",
+    "email": "philipp.wagner@incowia.com"
+  },
+  "license": "MIT",
+  "keywords": [ ],
+  "man": [ ],
+  "artifacts": {
+    "apps": [
+      {
+        "artifactId": "docs",
+        "description": "Generated webpackage documentation.",
+        "runnables": [
+          {
+            "name": "docs",
+            "path": "/index.html",
+            "description": "Show the interface of this component."
+          }
+        ]
+      }
+    ],
+    "elementaryComponents": [ ],
+    "compoundComponents": [ ],
+    "utilities": [ ]
+  }
+}
