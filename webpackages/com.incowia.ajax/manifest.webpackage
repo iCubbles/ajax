@@ -69,7 +69,7 @@
             ],
             "type": "string",
             "value": "get",
-            "description": "needs to be one of: get|post|delete|put|patch|head"
+            "description": "needs to be one of get|post|delete|put|patch|head"
           },
           {
             "slotId": "data",
@@ -82,6 +82,21 @@
             "slotId": "config",
             "direction": [
               "input"
+            ],
+            "type": "object"
+          },
+          {
+            "slotId": "status",
+            "direction": [
+              "output"
+            ],
+            "type": "string",
+            "description": "will be one of idle|busy|error"
+          },
+          {
+            "slotId": "result",
+            "direction": [
+              "output"
             ],
             "type": "object"
           }
