@@ -34,7 +34,36 @@
      * Manipulate an element’s local DOM when the cubbles framework is initialized and ready to work.
      */
     cubxReady: function () {
+    },
+
+    /**
+     * called each time value of slot 'url' has changed
+     */
+    modelUrlChanged: function() {
+
+    },
+
+    /**
+     * called each time value of slot 'method' has changed
+     */
+    modelMethodChanged: function() {
+
+    },
+
+    /**
+     * called each time value of slot 'data' has changed
+     */
+    modelDataChanged: function() {
+
+    },
+
+    /**
+     * called each time value of slot 'configs' has changed
+     */
+    modelConfigChanged: function() {
+
     }
+
 
   });
 }());
