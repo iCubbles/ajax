@@ -9,8 +9,8 @@
     "email": "philipp.wagner@incowia.com"
   },
   "license": "MIT",
-  "keywords": [ ],
-  "man": [ ],
+  "keywords": [],
+  "man": [],
   "artifacts": {
     "apps": [
       {
@@ -25,8 +25,76 @@
         ]
       }
     ],
-    "elementaryComponents": [ ],
-    "compoundComponents": [ ],
-    "utilities": [ ]
+    "elementaryComponents": [
+      {
+        "artifactId": "ajax-request",
+        "description": "This is an elementary-component based on Polymer.",
+        "runnables": [
+          {
+            "name": "demo",
+            "path": "/demo/index.html",
+            "description": "Demo app..."
+          },
+          {
+            "name": "docs",
+            "path": "/index.html",
+            "description": "Show the interface of this component."
+          }
+        ],
+        "endpoints": [
+          {
+            "endpointId": "main",
+            "description": "This is recommended for you use with webcomponents.",
+            "resources": [
+              "ajax-request.html"
+            ],
+            "dependencies": [
+              "cubx.core.rte@1.9.0/cubxpolymer/main",
+              "this/axios/html-import"
+            ]
+          }
+        ],
+        "slots": []
+      }
+    ],
+    "compoundComponents": [],
+    "utilities": [
+      {
+        "artifactId": "axios",
+        "description": "Promise based HTTP client for the browser and node.js - https://github.com/mzabriskie/axios",
+        "endpoints": [
+          {
+            "endpointId": "html-import",
+            "description": "This is recommended for you use with webcomponents.",
+            "resources": [
+              {
+                "prod": "axios.min.html",
+                "dev": "axios.html"
+              }
+            ],
+            "dependencies": [
+              "this/es6-promise/html-import"
+            ]
+          }
+        ]
+      },
+      {
+        "artifactId": "es6-promise",
+        "description": "A polyfill for ES6-style Promises - https://github.com/stefanpenner/es6-promise",
+        "endpoints": [
+          {
+            "endpointId": "html-import",
+            "description": "This is recommended for you use with webcomponents.",
+            "resources": [
+              {
+                "prod": "es6-promise.min.html",
+                "dev": "es6-promise.html"
+              }
+            ],
+            "dependencies": []
+          }
+        ]
+      }
+    ]
   }
 }
