@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>app</title>
+    <title>&lt;ajax-request&gt; demo</title>
 
     <script src="../../../cubx.core.rte@1.9.0/webcomponents/webcomponents-lite.js"></script>
 
@@ -18,6 +18,38 @@
 
 </head>
 <body>
+
+<div class="flex slot-container">
+    <div class="flex1">
+        <h1 class="text-center">input slots</h1>
+        <div class="flex">
+            <h3 class="flex1 text-center">name [type]</h3>
+            <h3 class="flex2 text-center">value</h3>
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="config">config [object]</label>
+            <textarea class="flex2" id="config" rows="10"></textarea>
+            <input class="" id="setConfig" type="button" value="set" disabled>
+        </div>
+    </div>
+    <div class="flex1 slots">
+        <h1 class="text-center">output slots</h1>
+        <div class="flex">
+            <h3 class="flex1 text-center">name [type]</h3>
+            <h3 class="flex2 text-center">value</h3>
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="status">status [string]</label>
+            <input class="flex2" id="status">
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="result">result [object]</label>
+            <textarea class="flex2" id="result" rows="10"></textarea>
+        </div>
+    </div>
+</div>
+
+
 <!--
     The cubbles client-runtime-container is bound to the next element.
     Place Cubbles-Component there as child element.
@@ -26,6 +58,70 @@
 <div cubx-core-crc>
      <ajax-request cubx-dependency="this/ajax-request/main"></ajax-request>
 </div>
+
+<script>
+    (function() {
+        document.addEventListener('cifReady', function() {
+            var ajaxRequest = document.getElementsByTagName('ajax-request')[0];
+            var btns = {
+                 config: document.getElementById('setConfig')
+            };
+            var slots = {
+                config: document.getElementById('config'),
+                status: document.getElementById('status'),
+                result: document.getElementById('result')
+            };
+
+            btns.config.removeAttribute('disabled');
+
+            btns.config.addEventListener('click', function() {
+                ajaxRequest.setConfig(JSON.parse(slots.config.value));
+            });
+
+            ajaxRequest.addEventListener('cifModelChange', function(event) {
+                if (event.detail.slot === 'status') {
+                    slots.status.value = JSON.stringify(event.detail.payload);
+                }
+                if (event.detail.slot === 'result') {
+                    slots.result.innerHTML = JSON.stringify(event.detail.payload);
+                }
+            });
+        });
+    })();
+</script>
+
+<style>
+    /* define some styles needed for slot input/output fields*/
+    .slot-container {
+        width: 80%;
+        margin: auto;
+        background: #e6ff99;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        margin: 5px;
+    }
+
+    .input-group {
+        align-items: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .flex {
+        display: flex;
+    }
+    .flex1 {flex: 1;}
+    .flex2 {flex: 2;}
+    .flex3 {flex: 3;}
+    .flex4 {flex: 4;}
+
+</style>
 
 </body>
 </html>

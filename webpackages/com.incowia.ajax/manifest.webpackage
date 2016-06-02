@@ -56,34 +56,12 @@
         ],
         "slots": [
           {
-            "slotId": "url",
-            "direction": [
-              "input"
-            ],
-            "type": "string"
-          },
-          {
-            "slotId": "method",
-            "direction": [
-              "input"
-            ],
-            "type": "string",
-            "value": "get",
-            "description": "needs to be one of get|post|delete|put|patch|head"
-          },
-          {
-            "slotId": "data",
-            "direction": [
-              "input"
-            ],
-            "type": "object"
-          },
-          {
             "slotId": "config",
             "direction": [
               "input"
             ],
-            "type": "object"
+            "type": "object",
+            "description": "this needs to be a valid axios config object, see https://github.com/mzabriskie/axios#request-config"
           },
           {
             "slotId": "status",

@@ -12,6 +12,12 @@
   CubxPolymer({
     is: 'ajax-request',
 
+    status : {
+      pending: 'pending',
+      idle: 'idle',
+      error: 'error'
+    },
+
     /**
      * Manipulate an element’s local DOM when the element is created.
      */
@@ -22,6 +28,9 @@
      * Manipulate an element’s local DOM when the element is created and initialized.
      */
     ready: function () {
+      this.setStatus(this.status.idle);
+      //create own axios instance
+      this._axios = window.axios.create();
     },
 
     /**
@@ -37,33 +46,28 @@
     },
 
     /**
-     * called each time value of slot 'url' has changed
-     */
-    modelUrlChanged: function() {
-
-    },
-
-    /**
-     * called each time value of slot 'method' has changed
-     */
-    modelMethodChanged: function() {
-
-    },
-
-    /**
-     * called each time value of slot 'data' has changed
-     */
-    modelDataChanged: function() {
-
-    },
-
-    /**
      * called each time value of slot 'configs' has changed
      */
-    modelConfigChanged: function() {
+    modelConfigChanged: function(config) {
+      console.log(config);
+      this._makeRequest(config);
+    },
 
+    /**
+     *
+     * @param {object} config The axios config object
+     * @private
+     */
+    _makeRequest: function(config) {
+      var self = this;
+      this.setStatus(this.status.pending);
+      this._axios.request(config).then(function(result){
+        self.setStatus(self.status.idle);
+        self.setResult(result.data);
+      }, function(err) {
+        self.setStatus(self.status.error);
+        self.setResult(err);
+      });
     }
-
-
   });
 }());
