@@ -28,7 +28,7 @@
         </div>
         <div class="flex input-group">
             <label class="flex1 text-center" for="requests">requests [object]</label>
-            <textarea class="flex2" id="requests" rows="10"></textarea>
+            <textarea class="flex2" id="requests" rows="10">[{"baseURL":"testData/","url":"data1.json","method":"get"},{"baseURL":"testData/","url":"data2.json","method":"get"}]</textarea>
             <input class="" id="setRequests" type="button" value="set" disabled>
         </div>
     </div>
@@ -61,7 +61,7 @@
 <script>
     (function() {
         document.addEventListener('cifReady', function() {
-            var ajaxRequest = document.getElementsByTagName('multiple-ajax-request')[0];
+            var multipleAjaxRequest = document.getElementsByTagName('multiple-ajax-request')[0];
             var btns = {
                 requests: document.getElementById('setRequests')
             };
@@ -74,14 +74,14 @@
             btns.requests.removeAttribute('disabled');
 
             btns.requests.addEventListener('click', function() {
-                ajaxRequest.setRequests(JSON.parse(slots.requests.value));
+                multipleAjaxRequest.setRequests(JSON.parse(slots.requests.value));
             });
 
-            ajaxRequest.addEventListener('cifModelChange', function(event) {
+            multipleAjaxRequest.addEventListener('cifModelChange', function(event) {
                 if (event.detail.slot === 'status') {
                     slots.status.value = JSON.stringify(event.detail.payload);
                 }
-                if (event.detail.slot === 'result') {
+                if (event.detail.slot === 'results') {
                     slots.results.innerHTML = JSON.stringify(event.detail.payload);
                 }
             });

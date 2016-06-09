@@ -49,7 +49,7 @@
      * called each time value of slot 'configs' has changed
      */
     modelConfigChanged: function(config) {
-      console.log(config);
+      // console.log(config);
       this._makeRequest(config);
     },
 

@@ -120,7 +120,7 @@
           {
             "slotId": "results",
             "type": "object",
-            "description": "Holds an array of response objects. The index of a response objects is the same like the index of the corresponding request in requests array.",
+            "description": "Holds an array of response objects. The index of a response objects equals the index of the corresponding request in requests array.",
             "direction": [
               "output"
             ]
