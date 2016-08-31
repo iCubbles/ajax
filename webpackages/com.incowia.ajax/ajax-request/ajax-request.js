@@ -50,6 +50,19 @@
      */
     modelConfigChanged: function(config) {
       // console.log(config);
+
+      // convert plain data object to URLSearchParams instance if property 'useURLSearchParams' is set to true
+      if (config.hasOwnProperty('useURLSearchParams')
+        && config.useURLSearchParams
+        && config.hasOwnProperty('data')
+        && typeof config.data === 'object') {
+          var data = new URLSearchParams();
+          Object.keys(config.data).forEach(function (key) {
+            data.set(key, config.data[key]);
+          });
+          config.data = data;
+      }
+
       this._makeRequest(config);
     },
 

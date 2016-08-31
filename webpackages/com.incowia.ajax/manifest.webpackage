@@ -145,11 +145,27 @@
           {
             "endpointId": "html-import",
             "description": "This is recommended for you use with webcomponents.",
+            "dependencies": [
+              "this/url-search-params-polyfill/html-import"
+            ],
             "resources": [
               {
                 "prod": "axios.min.html",
                 "dev": "axios.html"
               }
+            ]
+          }
+        ]
+      },
+      {
+        "artifactId": "url-search-params-polyfill",
+        "description": "Polyfill for URLSearchParams - https://github.com/WebReflection/url-search-params",
+        "endpoints": [
+          {
+            "endpointId": "html-import",
+            "description": "This is recommended for you use with webcomponents.",
+            "resources": [
+              "url-search-params-polyfill.html"
             ]
           }
         ]
