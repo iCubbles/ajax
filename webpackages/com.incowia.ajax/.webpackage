@@ -1,7 +1,12 @@
 {
   "uploadConfigs": {
+    "dev": {
+      "url": "http://cubbles-base-local/core",
+      "proxy": "",
+      "debug": false
+    },
     "release": {
-      "url": "https://www.cubbles.world/shared",
+      "url": "https://cubbles.world/core",
       "proxy": "",
       "debug": false
     }
