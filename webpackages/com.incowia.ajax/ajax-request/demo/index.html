@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>&lt;ajax-request&gt; demo</title>
 
-    <script src="../../../cubx.core.rte@2.0.0/webcomponents-lite/webcomponents-lite.js"></script>
+    <script src="../../../cubx.core.rte@2.0.1/webcomponents-lite/webcomponents-lite.js"></script>
 
     <!--
         Refer to the crc-loader artifact from a Cubbles-Base.
@@ -14,7 +14,7 @@
         Want to add a 'main' -script to be executed after the dependencies have been loaded?
         If yes, add the following attribute: data-crc-main="js/my-script.js"
     -->
-    <script src="../../../cubx.core.rte@2.0.0/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
+    <script src="../../../cubx.core.rte@2.0.1/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
 
 </head>
 <body>
@@ -28,7 +28,7 @@
         </div>
         <div class="flex input-group">
             <label class="flex1 text-center" for="config">config [object]</label>
-            <textarea class="flex2" id="config" rows="10"></textarea>
+            <textarea class="flex2" id="config" rows="10">{"baseURL":"testData/","url":"data.json","method":"get"}</textarea>
             <input class="" id="setConfig" type="button" value="set" disabled>
         </div>
     </div>
@@ -49,15 +49,7 @@
     </div>
 </div>
 
-
-<!--
-    The cubbles client-runtime-container is bound to the next element.
-    Place Cubbles-Component there as child element.
-    Note: Currently there is only one element supported. This will change in future (@see PLAT-205).
--->
-<div cubx-core-crc>
-     <ajax-request cubx-webpackage-id="this"></ajax-request>
-</div>
+<ajax-request cubx-webpackage-id="this"></ajax-request>
 
 <script>
     (function() {
