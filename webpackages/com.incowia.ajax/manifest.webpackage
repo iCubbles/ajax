@@ -19,7 +19,7 @@
         "runnables": [
           {
             "name": "docs",
-            "path": "/docs/index.html",
+            "path": "/index.html",
             "description": "Show the interface of this component."
           }
         ]
