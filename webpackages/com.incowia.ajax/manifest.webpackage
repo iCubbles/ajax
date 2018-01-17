@@ -19,7 +19,7 @@
         "runnables": [
           {
             "name": "docs",
-            "path": "/index.html",
+            "path": "/docs/index.html",
             "description": "Show the interface of this component."
           }
         ]
@@ -37,7 +37,7 @@
           },
           {
             "name": "docs",
-            "path": "/index.html",
+            "path": "/docs/index.html",
             "description": "Show the interface of this component."
           }
         ],
@@ -90,7 +90,7 @@
           },
           {
             "name": "docs",
-            "path": "/index.html",
+            "path": "/docs/index.html",
             "description": "Show the interface of this component."
           }
         ],
