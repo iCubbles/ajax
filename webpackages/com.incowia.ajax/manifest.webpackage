@@ -1,8 +1,8 @@
 {
   "name": "ajax",
   "groupId": "com.incowia",
-  "version": "0.2.6",
-  "modelVersion": "9.1.1",
+  "version": "1.0.0-SNAPSHOT",
+  "modelVersion": "10.0.0",
   "docType": "webpackage",
   "author": {
     "name": "Philipp Wagner",
@@ -71,8 +71,8 @@
         ],
         "dependencies": [
           {
-            "webpackageId": "cubx.core.rte@2.4.0",
-            "artifactId": "cubxpolymer"
+            "webpackageId": "cubx.core.rte@3.0.0-SNAPSHOT",
+            "artifactId": "cubxcomponent"
           },
           {
             "artifactId": "axios"
@@ -125,8 +125,8 @@
         ],
         "dependencies": [
           {
-            "webpackageId": "cubx.core.rte@2.4.0",
-            "artifactId": "cubxpolymer"
+            "webpackageId": "cubx.core.rte@3.0.0-SNAPSHOT",
+            "artifactId": "cubxcomponent"
           },
           {
             "artifactId": "axios"

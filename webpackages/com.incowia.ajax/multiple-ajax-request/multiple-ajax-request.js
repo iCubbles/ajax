@@ -9,7 +9,7 @@
    * > Access slot values:
    * slot 'a': this.getA(); | this.setA(value)
    */
-  CubxPolymer({
+  CubxComponent({
     is: 'multiple-ajax-request',
 
 
@@ -34,16 +34,11 @@
       this.axios = window.axios.create();
     },
 
-    /**
-     * Manipulate an element’s local DOM when the element is attached to the document.
-     */
-    attached: function () {
-    },
 
     /**
      * Manipulate an element’s local DOM when the cubbles framework is initialized and ready to work.
      */
-    cubxReady: function () {
+    contextReady: function () {
     },
 
     /**
