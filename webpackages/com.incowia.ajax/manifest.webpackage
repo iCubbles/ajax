@@ -8,6 +8,12 @@
     "name": "Philipp Wagner",
     "email": "philipp.wagner@incowia.com"
   },
+  "contributors": [
+    {
+      "name": "Edwin Gamboa",
+      "email": "edwin.gamboa@gmail.com"
+    }
+  ],
   "license": "MIT",
   "keywords": [],
   "man": [],
