@@ -1,10 +1,10 @@
 # Webpackage icubbles-ajax
 This webpackage contains cubbles components to make single or multiple ajax request. Currently there are two components available:
 
-### `icubbles-ajax-request`
+### `<icubbles-ajax-request>`
 Use this component if you want to make just a single ajax request.
 
-### `icubbles-ajax-multiple-request`
+### `<icubbles-ajax-multiple-request>`
 Use this component if you want to make 2 or more request in parallel.
 
 ## Note:
