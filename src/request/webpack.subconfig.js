@@ -1,5 +1,6 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const wpkgUtils = require('@cubbles/wpkg-utils');
 const webpackageName = wpkgUtils.getWebpackageName;
@@ -10,10 +11,10 @@ const config = {
   // make this configuration independent from the current working directory
   context: path.resolve(__dirname),
   // define the entry module for the bundle to be created
-  entry: `./c-util.js`,
+  entry: './element.js',
   output: {
     path: distFolder,
-    filename: `c-util.bundle.js`
+    filename: 'element.bundle.js'
   },
   module: {
     rules: [
@@ -50,8 +51,37 @@ const config = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: '**/*.md', to: distFolder }
+      { from: '**/*.md', to: distFolder },
+      { from: '**/data.json', to: distFolder }
     ], {}),
+    new HtmlWebpackPlugin({
+      template: 'element.html',
+      inject: 'body',
+      filename: 'element.html',
+      // manage placeholders
+      templateParameters: {
+        webpackageName: `${webpackageName}`,
+        elementName: `${elementName}`
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: 'SHOWROOM.html',
+      filename: 'SHOWROOM.html',
+      // manage placeholders
+      templateParameters: {
+        webpackageName: `${webpackageName}`,
+        elementName: `${elementName}`
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: 'demo/index.html',
+      filename: 'demo/index.html',
+      // manage placeholders
+      templateParameters: {
+        webpackageName: `${webpackageName}`,
+        elementName: `${elementName}`
+      }
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: 'bundleReport.html',
