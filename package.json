@@ -1,0 +1,119 @@
+{
+  "name": "@cubbles/vanilla-boilerplate",
+  "version": "0.1.15",
+  "description": "A template for a cubbles webpackage.",
+  "private": true,
+  "main": "\"\"",
+  "scripts": {
+    "build": "npm-run-all --serial clean \"_webpack -- -d --config src/webpack.config.js\"",
+    "build:watch": "npm-run-all --serial \"_webpack -- -d --config src/webpack.config.js --watch\"",
+    "build:prod": "npm-run-all --serial clean \"_webpack -- -p --config src/webpack.config.js\"",
+    "clean": "rimraf ./dist",
+    "upload": "upload-webpackage",
+    "upload:prod": "upload-webpackage -p",
+    "validate-manifest": "validate-manifest",
+    "start": "npm-run-all --parallel _serve _open",
+    "start:watch": "npm-run-all --parallel build:watch _serve _open",
+    "_serve": "light-server -s dist --proxy https://cubbles.world/sandbox -w \"dist/**\"",
+    "_webpack": "webpack",
+    "_open": "wpkg-utils-open",
+    "cli": "ntl -d -s 7"
+  },
+  "ntl": {
+    "descriptions": {
+      "build": "Clean the './dist' folder and (re-)build the webpackage from scratch.",
+      "build:watch": "(Re-)build the webpackage on source code changes.",
+      "build:prod": "(Re-)build the webpackage on production mode.",
+      "clean": "Clean the './dist' folder.",
+      "upload:dryRun": "Upload the webpackage - use dev config.",
+      "upload": "Upload the webpackage.",
+      "start": "Open the browser your your locally built webpackage.",
+      "start:watch": "Open the browser your your locally built webpackage and reload on changes."
+    }
+  },
+  "author": "Hans-Dieter Böhlau <hans-dieter.boehlau@incowia.com>",
+  "contributors": [
+    "Edwin Gamboa <edwingamboa355@gmail.com>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@cubbles/webpackage-document-api": "^0.2.3",
+    "@cubbles/webpackage-uploader": "^0.1.11",
+    "@cubbles/wpkg-utils": "^0.2.2",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "cssnano": "^4.1.7",
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "extra-watch-webpack-plugin": "^1.0.3",
+    "filemanager-webpack-plugin": "^2.0.5",
+    "find": "^0.2.9",
+    "generate-json-webpack-plugin": "^0.3.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "light-server": "^2.5.1",
+    "npm-run-all": "^4.1.3",
+    "opn": "^5.3.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.2.0",
+    "preprocess-loader": "^0.2.2",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "run-func": "^1.0.2",
+    "style-loader": "^0.21.0",
+    "sugarss": "^2.0.0",
+    "webpack": "^4.12.0",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-cli": "^3.0.3",
+    "yo": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubbles/coder-toolset.git"
+  },
+  "keywords": [
+    "vanila boilerplate",
+    "Cubbles"
+  ],
+  "bugs": {
+    "url": "https://github.com/cubbles/coder-toolset/issues"
+  },
+  "homepage": "https://github.com/cubbles/coder-toolset/tree/develop/packages/vanilla-boilerplate#cubblesvanilla-boilerplate",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "walk": "^2.3.14"
+  },
+  "cubbles": {
+    "coder-toolset": {
+      "cubx-webpackage-uploader": {
+        "dev": {
+          "target": {
+            "url": "http://cubbles.world/sandbox",
+            "proxy": ""
+          },
+          "debug": false,
+          "dryRun": true
+        },
+        "prod": {
+          "target": {
+            "url": "http://cubbles.world/shared",
+            "proxy": ""
+          },
+          "debug": false,
+          "dryRun": false
+        }
+      }
+    }
+  }
+}

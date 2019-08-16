@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ]
+  },
+  "globals": {
+    "CubxComponent": true,
+    "require": true,
+    "module": true
+  }
+}
