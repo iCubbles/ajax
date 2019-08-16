@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>&lt;ajax-multiple-request&gt; demo</title>
+
+    <script src="../../../cubx.core.rte@3.1.0-SNAPSHOT/webcomponents/custom-elements-es5-adapter.js"></script>
+    <script src="../../../cubx.core.rte@3.1.0-SNAPSHOT/webcomponents/webcomponents-lite.js"></script>
+    <script src="../../../cubx.core.rte@3.1.0-SNAPSHOT/crc-loader/js/main.js" data-crcinit-loadcif="true"></script>
+
+</head>
+<body>
+
+<div class="flex slot-container">
+    <div class="flex1">
+        <h1 class="text-center">input slots</h1>
+        <div class="flex">
+            <h3 class="flex1 text-center">name [type]</h3>
+            <h3 class="flex2 text-center">value</h3>
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="requests">requests [object]</label>
+            <textarea class="flex2" id="requests" rows="10">[{"baseURL":"testData/","url":"data1.json","method":"get"},{"baseURL":"testData/","url":"data2.json","method":"get"}]</textarea>
+            <input class="" id="setRequests" type="button" value="set" disabled>
+        </div>
+    </div>
+    <div class="flex1 slots">
+        <h1 class="text-center">output slots</h1>
+        <div class="flex">
+            <h3 class="flex1 text-center">name [type]</h3>
+            <h3 class="flex2 text-center">value</h3>
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="status">status [string]</label>
+            <input class="flex2" id="status">
+        </div>
+        <div class="flex input-group">
+            <label class="flex1 text-center" for="results">results [object]</label>
+            <textarea class="flex2" id="results" rows="10"></textarea>
+        </div>
+    </div>
+</div>
+
+<<%= elementName %> cubx-webpackage-id="this"></<%= elementName %>>
+
+<script>
+    (function() {
+        document.addEventListener('cifReady', function() {
+            var multipleAjaxRequest = document.getElementsByTagName('<%= elementName %>')[0];
+            var btns = {
+                requests: document.getElementById('setRequests')
+            };
+            var slots = {
+                requests: document.getElementById('requests'),
+                status: document.getElementById('status'),
+                results: document.getElementById('results')
+            };
+
+            btns.requests.removeAttribute('disabled');
+
+            btns.requests.addEventListener('click', function() {
+                multipleAjaxRequest.setRequests(JSON.parse(slots.requests.value));
+            });
+
+            multipleAjaxRequest.addEventListener('cifModelChange', function(event) {
+                if (event.detail.slot === 'status') {
+                    slots.status.value = JSON.stringify(event.detail.payload);
+                }
+                if (event.detail.slot === 'results') {
+                    slots.results.innerHTML = JSON.stringify(event.detail.payload);
+                }
+            });
+        });
+    })();
+</script>
+
+<style>
+    /* define some styles needed for slot input/output fields*/
+    .slot-container {
+        width: 80%;
+        margin: auto;
+        background: #e6ff99;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        margin: 5px;
+    }
+
+    .input-group {
+        align-items: center;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .flex {
+        display: flex;
+    }
+    .flex1 {flex: 1;}
+    .flex2 {flex: 2;}
+    .flex3 {flex: 3;}
+    .flex4 {flex: 4;}
+
+</style>
+
+
+</body>
+</html>
